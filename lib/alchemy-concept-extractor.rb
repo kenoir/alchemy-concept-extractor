@@ -1,4 +1,4 @@
-module ConceptExtractor
+module AlchemyConceptExtractor
   require 'uri'
   require 'readline'
   require 'rest_client'
