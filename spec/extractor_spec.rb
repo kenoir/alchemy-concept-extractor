@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe ConceptExtractor do
+describe AlchemyConceptExtractor do
 
-  describe ConceptExtractor::Extractor do
+  describe AlchemyConceptExtractor::Extractor do
 
-    subject { ConceptExtractor::Extractor.new("key") }
+    subject { AlchemyConceptExtractor::Extractor.new("key") }
 
-    describe ConceptExtractor::Extractor, '#initialize' do
+    describe AlchemyConceptExtractor::Extractor, '#initialize' do
 
       it 'should accept and set instance variables for api_key' do
         subject.api_key.should == "key" 
@@ -14,7 +14,7 @@ describe ConceptExtractor do
 
     end
 
-    describe ConceptExtractor::Extractor, '#get_concepts' do
+    describe AlchemyConceptExtractor::Extractor, '#get_concepts' do
 
       it 'should call proxy= on rest_client, then get with the alchemy uri' do
         uri = 'http://www.example.com'
@@ -36,11 +36,11 @@ describe ConceptExtractor do
 
   end
 
-  describe ConceptExtractor::Reporter do
+  describe AlchemyConceptExtractor::Reporter do
 
-    subject { ConceptExtractor::Reporter.new }
+    subject { AlchemyConceptExtractor::Reporter.new }
 
-    describe ConceptExtractor::Reporter, '#report' do
+    describe AlchemyConceptExtractor::Reporter, '#report' do
 
       it 'should return a valid report' do
         subject.report.should_not be_nil 
@@ -50,10 +50,10 @@ describe ConceptExtractor do
 
   end
 
-  describe ConceptExtractor, '#extract_concepts' do
+  describe AlchemyConceptExtractor, '#extract_concepts' do
 
     it 'should accept an API key, and file location and return an array of hashes' do
-      concepts = ConceptExtractor.extract_concepts("key",'/dummy/location')
+      concepts = AlchemyConceptExtractor.extract_concepts("key",'/dummy/location')
       pending
     end
 

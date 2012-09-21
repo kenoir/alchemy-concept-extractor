@@ -1,9 +1,4 @@
 module AlchemyConceptExtractor
-  require 'uri'
-  require 'readline'
-  require 'rest_client'
-  require 'json'
-  require 'pp'
 
   class Extractor
 
@@ -15,12 +10,12 @@ module AlchemyConceptExtractor
     end
 
     def get_concepts(uri)
-        RestClient.proxy = ENV['HTTP_PROXY']
-        accept = 'application/json'
-        response_as_json = RestClient.get alchemy_query_uri(uri), :accept => accept 
-        response = JSON.parse(response_as_json)
+      RestClient.proxy = ENV['HTTP_PROXY']
+      accept = 'application/json'
+      response_as_json = RestClient.get alchemy_query_uri(uri), :accept => accept 
+      response = JSON.parse(response_as_json)
 
-        response
+      response
     end
 
     def alchemy_query_uri(uri)
@@ -47,26 +42,6 @@ module AlchemyConceptExtractor
       URI.escape(sda_url)
     end
 
-  end
-
-  class Reporter
-
-    def initialize
-    end
-
-    def report 
-      "hello"
-    end
-
-  end
-
-  def self.extract_concepts(api_key,file_location)
-    extractor = Extractor.new(api_key)
-    uri = "http://www.example.com"
-
-    concepts = extractor.get_concepts(uri)
-
-    concepts
   end
 
 end
