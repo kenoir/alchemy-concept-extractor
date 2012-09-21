@@ -36,28 +36,4 @@ describe AlchemyConceptExtractor do
 
   end
 
-  describe AlchemyConceptExtractor::Reporter do
-
-    subject { AlchemyConceptExtractor::Reporter.new }
-
-    describe AlchemyConceptExtractor::Reporter, '#report' do
-
-      it 'should return a valid report' do
-        subject.report.should_not be_nil 
-      end
-
-    end
-
-  end
-
-  describe AlchemyConceptExtractor, '#extract_concepts' do
-
-    it 'should accept an API key, and file location and return an array of hashes' do
-      concepts = AlchemyConceptExtractor.extract_concepts("key",'/dummy/location')
-      pending
-    end
-
-  end
-
-
 end

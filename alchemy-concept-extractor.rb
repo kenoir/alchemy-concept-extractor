@@ -6,18 +6,7 @@ module AlchemyConceptExtractor
   require 'pp'
 
   require_relative 'lib/extractor.rb'
-
-  class Reporter
-
-    def initialize
-
-    end
-
-    def report 
-      "hello"
-    end
-
-  end
+  require_relative 'lib/reporter.rb'
 
   def self.extract_concepts(api_key,file_location)
     extractor = Extractor.new(api_key)
