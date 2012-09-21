@@ -7,41 +7,12 @@ module ConceptExtractor
 
   class Extractor
 
-    def sda_url_base
-      'http://www.bbc.co.uk/science/space/solarsystem/sun_and_planets'
-    end
+    attr :rest_client, true
 
-    def encoded_sda_url_base
-      URI.escape(sda_url_base)
-    end
-
-    def alchemy_api_endpoint
-      'http://access.alchemyapi.com/calls/url/URLGetRankedNamedEntities'
-    end
-
-    def apikey
-      apikey = nil
-      puts 'Paste in your AlchemyAPI API key and press enter. Then press ^D.'
-      while buf = Readline.readline("> ", true)
-           apikey = buf
-      end
-      apikey
-    end
-
-    def entities
-      ['sun','mercury_(planet)','venus','earth','mars','jupiter','saturn','uranus','neptune']
-    end
-
-    def get_and_parse_response(alchemy_query_uri)
-        RestClient.proxy = ENV['HTTP_PROXY']
-        response_as_json = RestClient.get alchemy_query_uri, :accept => 'application/json'
-        response = JSON.parse(response_as_json)
-        response
-    end
-
+    public
     def get_concepts(apikey)
-      entities.each{ |entity| 
-        alchemy_query_uri =  "#{alchemy_api_endpoint}?apikey=#{apikey}&url=#{encoded_sda_url_base}/#{entity}&outputMode=json"
+      urls.each{ |url| 
+        alchemy_query_uri =  "#{alchemy_api_endpoint}?apikey=#{apikey}&url=#{encoded_url(url)}&outputMode=json"
         puts "GETting #{alchemy_query_uri}"
         puts '-------------------------------------------------------------------'
         puts '-------------------------------------------------------------------'
@@ -50,11 +21,43 @@ module ConceptExtractor
       }
     end
 
+    private
+    def initialize(rest_client)
+      @rest_client = rest_client
+    end
+
+    private
+    def urls
+      data_file.split("\n")
+    end
+
+    private
+    def data_file
+      IO.read("data/urls.dat")
+    end
+
+    private
+    def encoded_url(sda_url)
+      URI.escape(sda_url)
+    end
+
+    private
+    def alchemy_api_endpoint
+      'http://access.alchemyapi.com/calls/url/URLGetRankedNamedEntities'
+    end
+
+    private
+    def get_and_parse_response(alchemy_query_uri)
+        @restClient.proxy = ENV['HTTP_PROXY']
+        response_as_json = @restClient.get alchemy_query_uri, :accept => 'application/json'
+        response = JSON.parse(response_as_json)
+        response
+    end
+
   end
 
-  def self.extractConcepts
+  def self.extractConcepts(apikey)
     extractor = Extractor.new
-    apikey = extractor.apikey
     concepts = extractor.get_concepts(apikey)
     concepts
   end
