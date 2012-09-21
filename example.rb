@@ -1,3 +1,3 @@
 require 'alchemy-concept-extractor'
 
-ConceptExtractor.extractConcepts
+AlchemyConceptExtractor.extractConcepts
