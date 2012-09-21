@@ -8,22 +8,28 @@ module ConceptExtractor
   class Extractor
 
     attr :rest_client, true
+    attr :api_key, true
 
-    public
-    def get_concepts(apikey)
-      urls.each{ |url| 
-        alchemy_query_uri =  "#{alchemy_api_endpoint}?apikey=#{apikey}&url=#{encoded_url(url)}&outputMode=json"
-        puts "GETting #{alchemy_query_uri}"
-        puts '-------------------------------------------------------------------'
-        puts '-------------------------------------------------------------------'
-        response = get_and_parse_response(alchemy_query_uri)
-        pp response
-      }
+    def initialize(api_key)
+      @api_key = api_key
+    end
+
+    def get_concepts(uri)
+        RestClient.proxy = ENV['HTTP_PROXY']
+        accept = 'application/json'
+        response_as_json = RestClient.get alchemy_query_uri(uri), :accept => accept 
+        response = JSON.parse(response_as_json)
+
+        response
+    end
+
+    def alchemy_query_uri(uri)
+      "#{alchemy_api_endpoint}?apikey=#{@api_key}&url=#{encoded_url(uri)}&outputMode=json"
     end
 
     private
-    def initialize(rest_client)
-      @rest_client = rest_client
+    def alchemy_api_endpoint
+      'http://access.alchemyapi.com/calls/url/URLGetRankedNamedEntities'
     end
 
     private
@@ -41,24 +47,25 @@ module ConceptExtractor
       URI.escape(sda_url)
     end
 
-    private
-    def alchemy_api_endpoint
-      'http://access.alchemyapi.com/calls/url/URLGetRankedNamedEntities'
+  end
+
+  class Reporter
+
+    def initialize
     end
 
-    private
-    def get_and_parse_response(alchemy_query_uri)
-        @restClient.proxy = ENV['HTTP_PROXY']
-        response_as_json = @restClient.get alchemy_query_uri, :accept => 'application/json'
-        response = JSON.parse(response_as_json)
-        response
+    def report 
+      "hello"
     end
 
   end
 
-  def self.extractConcepts(apikey)
-    extractor = Extractor.new
-    concepts = extractor.get_concepts(apikey)
+  def self.extract_concepts(api_key,file_location)
+    extractor = Extractor.new(api_key)
+    uri = "http://www.example.com"
+
+    concepts = extractor.get_concepts(uri)
+
     concepts
   end
 
