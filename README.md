@@ -5,10 +5,12 @@ A thin client around the Alchemy REST API.
 
 Requires an AlchemyAPI api key.
 
-Install gem dependencies:
+In your Gemfile:
 
-    bundle
+    gem 'alchemy-concept-extractor', :git => 'https://github.com/BBC-Knowlearn/alchemy-concept-extractor.git' 
 
 To run:
 
-    ruby extract.rb
+    require 'alchemy-concept-extractor'
+
+    ConceptExtractor.extractConcepts
