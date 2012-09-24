@@ -33,11 +33,6 @@ module AlchemyConceptExtractor
     end
 
     private
-    def data_file
-      IO.read("data/urls.dat")
-    end
-
-    private
     def encoded_url(sda_url)
       URI.escape(sda_url)
     end
