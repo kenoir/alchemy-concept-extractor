@@ -1,1 +1,1 @@
-_:hello <http://purl.org/dc/terms/title> "Hello, world!" .
+_:person <http://xmlns.com/foaf/0.1/name> "Winston Churchill" .
