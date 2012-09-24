@@ -8,12 +8,17 @@ module AlchemyConceptExtractor
   require_relative 'lib/extractor.rb'
   require_relative 'lib/reporter.rb'
 
+  def self.uris(datfile_location)
+    uris_file = IO.read(datfile_location)
+    uris = uris_file.split("\n")
+
+    uris
+  end
+
   def self.extract(api_key,datfile_location,outfile_location,rest_client = RestClient)
     extractor = Extractor.new(api_key,rest_client)
 
-    uris = ["http://www.example.com/resource"]
-    
-    uris.each do | uri |
+    uris(datfile_location).each do | uri |
       concepts = extractor.get_concepts(uri)
 
       refiner = Refiner.new
