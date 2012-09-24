@@ -8,7 +8,7 @@ describe AlchemyConceptExtractor do
 
     describe AlchemyConceptExtractor::Refiner, '#refine' do
       
-      it 'should accept a return a valid graph' do
+      it 'should accept a set of concepts and return a valid graph' do
         pending
       end
 

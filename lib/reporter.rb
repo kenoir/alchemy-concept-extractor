@@ -16,7 +16,6 @@ module AlchemyConceptExtractor
 
     def report(format) 
       graph = refiner.refine(concepts) 
-
       graph.dump(format)
     end
 

@@ -8,18 +8,22 @@ module AlchemyConceptExtractor
   require_relative 'lib/extractor.rb'
   require_relative 'lib/reporter.rb'
 
-  def self.extract(api_key,datfile_location,outfile_location)
-    extractor = Extractor.new(api_key)
+  def self.extract(api_key,datfile_location,outfile_location,rest_client = RestClient)
+    extractor = Extractor.new(api_key,rest_client)
 
-    uri = "http://www.example.com"
-    concepts = extractor.get_concepts(uri)
+    uris = ["http://www.example.com/resource"]
+    
+    uris.each do | uri |
+      concepts = extractor.get_concepts(uri)
 
-    refiner = Refiner.new
-    reporter = Reporter.new(concepts,refiner)
+      refiner = Refiner.new
+      reporter = Reporter.new(concepts,refiner)
 
-    serialised_rdf = reporter.report(:ntriples) 
+      serialised_rdf = reporter.report(:ntriples) 
 
-    File.open(outfile_location, 'w') {|f| f.write(serialised_rdf) }
+      file_location = File.join(outfiles_location,File.basename(uri))
+      File.open(file_location, 'w') {|f| f.write(serialised_rdf) }
+    end
   end
 
 end

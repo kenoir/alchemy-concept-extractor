@@ -26,8 +26,8 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-def outfile_location
-  File.join(File.dirname(__FILE__),'data','out.file')
+def outfiles_location
+  File.join(File.dirname(__FILE__),'data','out')
 end
 
 def datfile_location
@@ -36,6 +36,10 @@ end
 
 def dummy_api_key
   "dummy_api_key"
+end
+
+def dummy_json
+  '{"key":"value"}'
 end
 
 def dummy_concepts
@@ -48,4 +52,14 @@ def dummy_refiner
   end
 
   @dummy_refiner
+end
+
+def dummy_rest_client
+  if @dummy_rest_client.nil?
+    @dummy_rest_client = RestClient
+    @dummy_rest_client.stub(:get) { dummy_json }
+    @dummy_rest_client.stub(:proxy=)
+  end
+
+  @dummy_rest_client
 end

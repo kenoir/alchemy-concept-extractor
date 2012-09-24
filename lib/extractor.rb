@@ -1,18 +1,21 @@
 module AlchemyConceptExtractor
 
   class Extractor
+    require 'rest_client'
 
     attr :rest_client, true
     attr :api_key, true
 
-    def initialize(api_key)
+    def initialize(api_key,rest_client)
+      @rest_client = rest_client
       @api_key = api_key
     end
 
-    def get_concepts(uri)
-      RestClient.proxy = ENV['HTTP_PROXY']
+    def get_concepts(uri) 
+
+      @rest_client.proxy = ENV['HTTP_PROXY']
       accept = 'application/json'
-      response_as_json = RestClient.get alchemy_query_uri(uri), :accept => accept 
+      response_as_json = @rest_client.get alchemy_query_uri(uri), :accept => accept 
       response = JSON.parse(response_as_json)
 
       response
