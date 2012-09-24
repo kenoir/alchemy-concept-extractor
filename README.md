@@ -1,6 +1,9 @@
 alchemy-concept-extractor
 =========================
 
+[![Build Status](https://secure.travis-ci.org/BBC-Knowlearn/alchemy-concept-extractor.png?branch=master)](http://travis-ci.org/BBC-Knowlearn/alchemy-concept-extractor)
+
+
 A thin client around the Alchemy REST API.
 
 Requires an AlchemyAPI api key.
