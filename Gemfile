@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'rdf'
+gem 'rake'
 gem 'rest-client'
 gem 'json'
 gem 'rspec'
