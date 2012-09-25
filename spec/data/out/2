@@ -1,1 +1,8 @@
-_:hello <http://purl.org/dc/terms/title> "Hello, world!" .
+<http://dbpedia.org/resource/Melvyn_Bragg> <http://xmlns.com/foaf/0.1/name> "Melvyn Bragg" .
+<http://dbpedia.org/resource/Melvyn_Bragg> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/David_H._Levy> <http://xmlns.com/foaf/0.1/name> "Dr David Levy" .
+<http://dbpedia.org/resource/David_H._Levy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Galileo_Galilei> <http://xmlns.com/foaf/0.1/name> "Galileo Galilei" .
+<http://dbpedia.org/resource/Galileo_Galilei> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Arthur_C._Clarke> <http://xmlns.com/foaf/0.1/name> "Arthur C Clarke" .
+<http://dbpedia.org/resource/Arthur_C._Clarke> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .

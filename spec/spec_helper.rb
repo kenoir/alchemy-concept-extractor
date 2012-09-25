@@ -39,7 +39,8 @@ def dummy_api_key
 end
 
 def dummy_json
-  '{"key":"value"}'
+  dummy_json_file_location = File.join(File.dirname(__FILE__),'data','jupiter.json')
+  IO.read(dummy_json_file_location)
 end
 
 def dummy_concepts

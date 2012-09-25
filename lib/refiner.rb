@@ -17,8 +17,9 @@ module AlchemyConceptExtractor
             person_uri = entity['disambiguated']['dbpedia']
           end
 
-puts "#{person_uri} WHOOP"
-
+          # TODO: Should we make a further attempt at disambiguating?
+          next if person_uri.nil?
+      
           name = entity['text']
           subject = RDF::URI.new(person_uri)
 
