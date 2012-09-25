@@ -7,6 +7,7 @@ module AlchemyConceptExtractor
 
   require_relative 'lib/extractor.rb'
   require_relative 'lib/reporter.rb'
+  require_relative 'lib/refiner.rb'
 
   class ConceptExtractor
     attr :api_key
