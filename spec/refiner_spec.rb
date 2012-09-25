@@ -28,8 +28,6 @@ describe AlchemyConceptExtractor do
       it 'should return a list of places in the graph' do
         refined_graph = subject.refine(stub_concepts)
 
-pending
-
         solutions = places_query.execute(refined_graph)
         solutions.count.should > 0
 
