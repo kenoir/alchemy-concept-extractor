@@ -32,7 +32,6 @@ describe AlchemyConceptExtractor do
 
     describe AlchemyConceptExtractor::ConceptExtractor, '#extract' do
       it 'should create a set of valid rdf files' do
-        pending('extract is passing no concepts to the reporter')
         subject.extract
 
         Dir["#{outfiles_location}/*"].each do | file_location |

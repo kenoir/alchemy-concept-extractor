@@ -16,4 +16,7 @@ To run:
 
     require 'alchemy-concept-extractor'
 
-    ConceptExtractor.extractConcepts
+    AlchemyConceptExtractor.extract(
+      'api_key',
+      'location_of_newline_seperated_urls_in_file',
+      'location_of_output_files')
