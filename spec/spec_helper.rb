@@ -63,3 +63,27 @@ def dummy_rest_client
 
   @dummy_rest_client
 end
+
+def stub_concepts
+  path = File.expand_path('./spec/data/jupiter.json')
+  file = File.new(path)
+  json = file.read
+  concepts = JSON.parse(json)
+
+  concepts
+end
+
+def people_query
+  query = RDF::Query.new({
+    :person => {
+      RDF.type  => FOAF.Person,
+      FOAF.name => :name,
+    }
+  })
+
+  query
+end
+
+def places_query
+  
+end

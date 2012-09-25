@@ -16,32 +16,49 @@ module AlchemyConceptExtractor
           else
             person_uri = entity['disambiguated']['dbpedia']
           end
-      
+
+puts "#{person_uri} WHOOP"
+
           name = entity['text']
           subject = RDF::URI.new(person_uri)
 
-          predicate_name = FOAF.name
-          predicate_type = RDF.type
-
-          object_name = RDF::Literal.new(name)
-          object_person = FOAF.Person
-
-          type_statement = RDF::Statement.new(
-            subject,
-            predicate_type,
-            object_person)
-
-          person_statement = RDF::Statement.new(
-            subject, 
-            predicate_name, 
-            object_name)
-
-          rdf_graph.insert type_statement 
-          rdf_graph.insert person_statement
+          rdf_graph.insert person_name_statement(subject,name) 
+          rdf_graph.insert person_type_statement(subject)
         end
       end
 
       rdf_graph
+    end
+
+    private 
+    def insert_statement(statement)
+      rdf_graph.insert statement
+    end
+
+    private 
+    def person_name_statement(subject,name)
+      object_name = RDF::Literal.new(name)
+      predicate_name = FOAF.name
+
+      person_statement = RDF::Statement.new(
+        subject, 
+        predicate_name, 
+        object_name)
+    
+      person_statement
+    end
+
+    private
+    def person_type_statement(subject)
+      predicate_type = RDF.type
+      object_person = FOAF.Person
+
+      type_statement = RDF::Statement.new(
+        subject,
+        predicate_type,
+        object_person)
+
+      type_statement
     end
 
   end
