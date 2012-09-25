@@ -34,12 +34,15 @@ def datfile_location
   File.join(File.dirname(__FILE__),'data','dat.file')
 end
 
+def dummy_json_file_location
+  File.join(File.dirname(__FILE__),'data','mock_alchemy_api_response.json')
+end
+
 def dummy_api_key
   "dummy_api_key"
 end
 
 def dummy_json
-  dummy_json_file_location = File.join(File.dirname(__FILE__),'data','jupiter.json')
   IO.read(dummy_json_file_location)
 end
 
@@ -66,12 +69,7 @@ def dummy_rest_client
 end
 
 def stub_concepts
-  path = File.expand_path('./spec/data/jupiter.json')
-  file = File.new(path)
-  json = file.read
-  concepts = JSON.parse(json)
-
-  concepts
+  JSON.parse(dummy_json)
 end
 
 def people_query
@@ -86,5 +84,5 @@ def people_query
 end
 
 def places_query
-  
+ 
 end

@@ -1,8 +1,16 @@
-<http://dbpedia.org/resource/Melvyn_Bragg> <http://xmlns.com/foaf/0.1/name> "Melvyn Bragg" .
-<http://dbpedia.org/resource/Melvyn_Bragg> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://dbpedia.org/resource/David_H._Levy> <http://xmlns.com/foaf/0.1/name> "Dr David Levy" .
-<http://dbpedia.org/resource/David_H._Levy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://dbpedia.org/resource/Galileo_Galilei> <http://xmlns.com/foaf/0.1/name> "Galileo Galilei" .
-<http://dbpedia.org/resource/Galileo_Galilei> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://dbpedia.org/resource/Arthur_C._Clarke> <http://xmlns.com/foaf/0.1/name> "Arthur C Clarke" .
-<http://dbpedia.org/resource/Arthur_C._Clarke> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Adolf_Hitler> <http://xmlns.com/foaf/0.1/name> "Hitler" .
+<http://dbpedia.org/resource/Adolf_Hitler> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/charset-error> <http://xmlns.com/foaf/0.1/name> "Hermann Goering" .
+<http://dbpedia.org/resource/charset-error> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Winston_Churchill> <http://xmlns.com/foaf/0.1/name> "Churchill" .
+<http://dbpedia.org/resource/Winston_Churchill> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Hugh_Dowding,_1st_Baron_Dowding> <http://xmlns.com/foaf/0.1/name> "Sir Hugh Dowding" .
+<http://dbpedia.org/resource/Hugh_Dowding,_1st_Baron_Dowding> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Edward_R._Murrow> <http://xmlns.com/foaf/0.1/name> "Ed Murrow" .
+<http://dbpedia.org/resource/Edward_R._Murrow> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Michael_Flanders> <http://xmlns.com/foaf/0.1/name> "Michael Flanders" .
+<http://dbpedia.org/resource/Michael_Flanders> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/A._J._P._Taylor> <http://xmlns.com/foaf/0.1/name> "A.J.P. Taylor" .
+<http://dbpedia.org/resource/A._J._P._Taylor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://dbpedia.org/resource/Douglas_Bader> <http://xmlns.com/foaf/0.1/name> "Douglas Bader" .
+<http://dbpedia.org/resource/Douglas_Bader> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
