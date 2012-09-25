@@ -37,14 +37,11 @@ describe AlchemyConceptExtractor do
         refined_graph = subject.refine(stub_concepts)
 
         solutions = people_query.execute(refined_graph)
-
-        pending
         solutions.count.should > 0
 
         solutions.each do |solution|
           solution.name.should_not be_nil
         end
-        
       end
 
       it 'should return a list of places in the graph' do

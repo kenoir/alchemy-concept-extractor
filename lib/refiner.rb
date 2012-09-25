@@ -7,6 +7,7 @@ module AlchemyConceptExtractor
       rdf_graph = RDF::Graph.new
 
       concepts['entities'].each do |entity|
+
         if entity['type'] == 'Person'
        
           person_uri = ""
@@ -17,11 +18,25 @@ module AlchemyConceptExtractor
           end
       
           name = entity['text']
-          s = RDF::URI.new(person_uri)
-          p = FOAF.name
-          o = RDF::Literal.new(name)
-          person_statement = RDF::Statement.new(s, p, o)
+          subject = RDF::URI.new(person_uri)
 
+          predicate_name = FOAF.name
+          predicate_type = RDF.type
+
+          object_name = RDF::Literal.new(name)
+          object_person = FOAF.Person
+
+          type_statement = RDF::Statement.new(
+            subject,
+            predicate_type,
+            object_person)
+
+          person_statement = RDF::Statement.new(
+            subject, 
+            predicate_name, 
+            object_name)
+
+          rdf_graph.insert type_statement 
           rdf_graph.insert person_statement
         end
       end
