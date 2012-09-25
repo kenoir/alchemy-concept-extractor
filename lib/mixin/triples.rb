@@ -1,6 +1,8 @@
 module AlchemyConceptExtractor
   module Triples
 
+    include RDF
+
     def person_triples(person)
       name = person['text']
 
@@ -23,7 +25,7 @@ module AlchemyConceptExtractor
 
     def place_triples(place)
       name = place['text']
-      event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl")
+      event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
 
       triples = {
         :name => {

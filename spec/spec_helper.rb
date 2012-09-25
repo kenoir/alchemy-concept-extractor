@@ -84,7 +84,7 @@ def people_query
 end
 
 def places_query
-  event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl")
+  event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
   query = RDF::Query.new({
     :place => {
       RDF.type  => event.place,
