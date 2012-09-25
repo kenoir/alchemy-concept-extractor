@@ -34,12 +34,15 @@ def datfile_location
   File.join(File.dirname(__FILE__),'data','dat.file')
 end
 
+def dummy_json_file_location
+  File.join(File.dirname(__FILE__),'data','mock_alchemy_api_response.json')
+end
+
 def dummy_api_key
   "dummy_api_key"
 end
 
 def dummy_json
-  dummy_json_file_location = File.join(File.dirname(__FILE__),'data','jupiter.json')
   IO.read(dummy_json_file_location)
 end
 
@@ -63,4 +66,31 @@ def dummy_rest_client
   end
 
   @dummy_rest_client
+end
+
+def stub_concepts
+  JSON.parse(dummy_json)
+end
+
+def people_query
+  query = RDF::Query.new({
+    :person => {
+      RDF.type  => FOAF.Person,
+      FOAF.name => :name,
+    }
+  })
+
+  query
+end
+
+def places_query
+  event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl")
+  query = RDF::Query.new({
+    :place => {
+      RDF.type  => event.place,
+      RDFS.label => :name,
+    }
+  })
+
+  query
 end
