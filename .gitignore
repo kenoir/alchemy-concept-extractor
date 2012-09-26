@@ -1,2 +1,4 @@
 *.swp
 spec/data/out/*
+output/*
+run.rb

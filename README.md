@@ -14,9 +14,10 @@ In your Gemfile:
 
 To run:
 
-    require 'alchemy-concept-extractor'
+    require_relative 'alchemy-concept-extractor.rb'
 
     AlchemyConceptExtractor.extract(
       'api_key',
-      'location_of_newline_seperated_urls_in_file',
-      'location_of_output_files')
+      'location_of_newline_separated_urls_in_file',
+      'location_of_output_files'
+    )
