@@ -1,5 +1,6 @@
 require 'rdf'
 require 'rdf/ntriples'
+require 'rdf/rdfxml'
 
 require_relative '../alchemy-concept-extractor.rb'
 require_relative '../lib/extractor.rb'
@@ -28,6 +29,10 @@ end
 
 def outfiles_location
   File.join(File.dirname(__FILE__),'data','out')
+end
+
+def output_format
+  :ntriples
 end
 
 def datfile_location
@@ -75,9 +80,9 @@ end
 def people_query
   query = RDF::Query.new({
     :person => {
-      RDF.type  => FOAF.Person,
-      FOAF.name => :name,
-    }
+    RDF.type  => FOAF.Person,
+    FOAF.name => :name,
+  }
   })
 
   query
@@ -87,10 +92,18 @@ def places_query
   event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
   query = RDF::Query.new({
     :place => {
-      RDF.type  => event.place,
-      RDFS.label => :name,
-    }
+    RDF.type  => event.place,
+    RDFS.label => :name,
+  }
   })
 
   query
 end
+
+def should_not_raise_bad_format_exception(format,file_location)
+  options = { :validate => true }
+  file_contents = IO.read(file_location)
+  RDF::Reader.for(format).new(file_contents,options)
+end
+
+
