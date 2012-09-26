@@ -12,7 +12,17 @@ In your Gemfile:
 
     gem 'alchemy-concept-extractor', :git => 'https://github.com/BBC-Knowlearn/alchemy-concept-extractor.git' 
 
-To run:
+To run using the gem:
+
+    require 'alchemy-concept-extractor'
+
+    AlchemyConceptExtractor.extract(
+      'api_key',
+      'location_of_newline_separated_urls_in_file',
+      'location_of_output_files'
+    )
+
+To run after cloning this project:
 
     require_relative 'alchemy-concept-extractor.rb'
 
