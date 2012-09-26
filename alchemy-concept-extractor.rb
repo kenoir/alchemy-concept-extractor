@@ -13,16 +13,19 @@ module AlchemyConceptExtractor
     attr :api_key
     attr :datfile_location
     attr :outfiles_location
+    attr :output_format
     attr :rest_client
 
     def initialize(api_key,
       datfile_location = "uris.dat",
       outfiles_location = ".",
+      output_format = :ntriples,
       rest_client = RestClient)
 
       @api_key = api_key
       @datfile_location = datfile_location
       @outfiles_location = outfiles_location
+      @output_format = output_format 
       @rest_client = rest_client
     end
 

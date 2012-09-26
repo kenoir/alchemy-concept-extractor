@@ -9,9 +9,10 @@ describe AlchemyConceptExtractor do
       dummy_api_key,
       datfile_location,
       outfiles_location,
+      output_format,
       dummy_rest_client)
     }
-  
+
     describe AlchemyConceptExtractor::ConceptExtractor, '#uris' do
       it 'return an array of URIs' do
         uris = subject.uris
@@ -22,10 +23,11 @@ describe AlchemyConceptExtractor do
     end
 
     describe AlchemyConceptExtractor::ConceptExtractor, '#initialise' do
-      it 'should accept and set an API key, file location to read from and file location to write to' do
+      it 'should accept and set an API key, file location to read from, file location to write to, and output type' do
         subject.api_key.should == dummy_api_key
         subject.datfile_location.should == datfile_location
         subject.outfiles_location.should == outfiles_location
+        subject.output_format.should == output_format
         subject.rest_client.should == dummy_rest_client
       end
     end
@@ -38,6 +40,28 @@ describe AlchemyConceptExtractor do
           graph = RDF::Graph.load(file_location)
         end
       end
+
+      it 'should accept different output formats and write the appropriate output' do
+        pending
+        formats = [:ntriples, :rdfxml]
+
+        formats.each do |format|
+          concept_extractor =  AlchemyConceptExtractor::ConceptExtractor.new(
+            dummy_api_key,
+            datfile_location,
+            outfiles_location,
+            format,
+            dummy_rest_client
+          )
+
+          subject.extract
+
+          Dir["#{outfiles_location}/*"].each do | file_location |
+            should_not_raise_bad_format_exception(format,file_location)
+          end
+        end
+
+      end
     end
 
   end
@@ -49,7 +73,7 @@ describe AlchemyConceptExtractor do
       concept_extractor.should_receive(:extract)
 
       AlchemyConceptExtractor::ConceptExtractor.should_receive(:new) { concept_extractor }
-      
+
       AlchemyConceptExtractor.extract(dummy_api_key,datfile_location,outfiles_location)
     end
 
