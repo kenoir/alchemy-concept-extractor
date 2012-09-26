@@ -41,10 +41,8 @@ describe AlchemyConceptExtractor do
         end
       end
 
-      it 'should accept different output formats and write the appropriate output' do
-        pending
-        formats = [:ntriples, :rdfxml]
-
+      it 'should accept different output formats (:ntriples,:rdfxml,:nquads,:trig)  and write the appropriate output' do
+        formats = [:ntriples,:rdfxml,:nquads,:trig]
         formats.each do |format|
           concept_extractor =  AlchemyConceptExtractor::ConceptExtractor.new(
             dummy_api_key,
@@ -54,7 +52,7 @@ describe AlchemyConceptExtractor do
             dummy_rest_client
           )
 
-          subject.extract
+          concept_extractor.extract
 
           Dir["#{outfiles_location}/*"].each do | file_location |
             should_not_raise_bad_format_exception(format,file_location)
@@ -74,7 +72,7 @@ describe AlchemyConceptExtractor do
 
       AlchemyConceptExtractor::ConceptExtractor.should_receive(:new) { concept_extractor }
 
-      AlchemyConceptExtractor.extract(dummy_api_key,datfile_location,outfiles_location)
+      AlchemyConceptExtractor.extract(dummy_api_key,datfile_location,outfiles_location,output_format)
     end
 
   end

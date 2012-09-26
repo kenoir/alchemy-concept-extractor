@@ -1,8 +1,7 @@
 module AlchemyConceptExtractor
   require 'rdf'
-  require 'rdf/ntriples'
-
-  include RDF
+  require 'rdf/rdfxml'
+  require 'rdf/trig'
 
   class Reporter
 

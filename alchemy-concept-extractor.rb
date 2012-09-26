@@ -4,6 +4,9 @@ module AlchemyConceptExtractor
   require 'rest_client'
   require 'json'
   require 'pp'
+  require 'rdf'
+
+  include RDF
 
   require_relative 'lib/extractor.rb'
   require_relative 'lib/reporter.rb'
@@ -45,7 +48,7 @@ module AlchemyConceptExtractor
         refiner = Refiner.new
         reporter = Reporter.new(concepts,refiner)
 
-        serialised_rdf = reporter.report(:ntriples) 
+        serialised_rdf = reporter.report(@output_format) 
 
         file_location = File.join(outfiles_location,File.basename(uri))
         File.open(file_location, 'w') {|f| f.write(serialised_rdf) }
@@ -53,7 +56,7 @@ module AlchemyConceptExtractor
     end
   end
 
-  def self.extract(api_key,datfile_location,outfile_location,rest_client = RestClient)
+  def self.extract(api_key,datfile_location,outfile_location,output_format = :ntriples, rest_client = RestClient)
     concept_extractor = ConceptExtractor.new(api_key,datfile_location,outfile_location,rest_client)
     concept_extractor.extract
   end

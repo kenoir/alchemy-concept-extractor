@@ -1,5 +1,6 @@
 require 'rdf'
 require 'rdf/ntriples'
+require 'rdf/rdfxml'
 
 require_relative '../alchemy-concept-extractor.rb'
 require_relative '../lib/extractor.rb'

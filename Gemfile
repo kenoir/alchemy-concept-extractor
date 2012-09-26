@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rdf'
+gem 'rdf-rdfxml'
+gem 'rdf-trig'
+gem 'nokogiri'
 gem 'rake'
 gem 'rest-client'
 gem 'json'
