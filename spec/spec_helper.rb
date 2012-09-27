@@ -78,10 +78,10 @@ def stub_concepts
 end
 
 def people_query
+  event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
   query = RDF::Query.new({
     :person => {
-    RDF.type  => FOAF.Person,
-    FOAF.name => :name,
+    event.agent => :uri
   }
   })
 
@@ -92,8 +92,7 @@ def places_query
   event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
   query = RDF::Query.new({
     :place => {
-    RDF.type  => event.place,
-    RDFS.label => :name,
+    event.place  => :uri 
   }
   })
 
