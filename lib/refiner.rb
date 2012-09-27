@@ -8,8 +8,11 @@ module AlchemyConceptExtractor
     def refine(concepts)
       rdf_graph = RDF::Graph.new
       all_triples = Array.new
+      
+      @object = concepts['url']
 
       concepts['entities'].each do | entity |
+
         case entity['type']
         when "City" || "Country" 
           all_triples.concat triples(entity) { place_triples(entity) }

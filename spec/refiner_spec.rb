@@ -21,7 +21,7 @@ describe AlchemyConceptExtractor do
         solutions.count.should > 0
 
         solutions.each do |solution|
-          solution.name.should_not be_nil
+          solution.uri.should_not be_nil
         end
       end
 
@@ -32,7 +32,7 @@ describe AlchemyConceptExtractor do
         solutions.count.should > 0
 
         solutions.each do |solution|
-          solution.name.should_not be_nil
+          solution.uri.should_not be_nil
         end
       end
 
