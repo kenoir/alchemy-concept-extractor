@@ -7,8 +7,8 @@ describe AlchemyConceptExtractor do
 
     subject { AlchemyConceptExtractor::ConceptExtractor.new(
       dummy_api_key,
+      outfile_location,
       datfile_location,
-      outfiles_location,
       output_format,
       dummy_rest_client)
     }
@@ -26,19 +26,17 @@ describe AlchemyConceptExtractor do
       it 'should accept and set an API key, file location to read from, file location to write to, and output type' do
         subject.api_key.should == dummy_api_key
         subject.datfile_location.should == datfile_location
-        subject.outfiles_location.should == outfiles_location
+        subject.outfile_location.should == outfile_location
         subject.output_format.should == output_format
         subject.rest_client.should == dummy_rest_client
       end
     end
 
     describe AlchemyConceptExtractor::ConceptExtractor, '#extract' do
-      it 'should create a set of valid rdf files' do
+      it 'should create a single valid rdf file' do
         subject.extract
 
-        Dir["#{outfiles_location}/*"].each do | file_location |
-          graph = RDF::Graph.load(file_location)
-        end
+        graph = RDF::Graph.load(outfile_location)
       end
 
       it 'should accept different output formats (:ntriples,:rdfxml,:nquads,:trig)  and write the appropriate output' do
@@ -46,15 +44,15 @@ describe AlchemyConceptExtractor do
         formats.each do |format|
           concept_extractor =  AlchemyConceptExtractor::ConceptExtractor.new(
             dummy_api_key,
+            outfile_location,
             datfile_location,
-            outfiles_location,
             format,
             dummy_rest_client
           )
 
           concept_extractor.extract
 
-          Dir["#{outfiles_location}/*"].each do | file_location |
+          Dir["#{outfile_location}/*"].each do | file_location |
             should_not_raise_bad_format_exception(format,file_location)
           end
         end
@@ -72,7 +70,7 @@ describe AlchemyConceptExtractor do
 
       AlchemyConceptExtractor::ConceptExtractor.should_receive(:new) { concept_extractor }
 
-      AlchemyConceptExtractor.extract(dummy_api_key,datfile_location,outfiles_location,output_format)
+      AlchemyConceptExtractor.extract(dummy_api_key,datfile_location,outfile_location,output_format)
     end
 
   end

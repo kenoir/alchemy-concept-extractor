@@ -27,8 +27,8 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-def outfiles_location
-  File.join(File.dirname(__FILE__),'data','out')
+def outfile_location
+  File.join(File.dirname(__FILE__),'data','out','output_rdf')
 end
 
 def output_format
