@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe AlchemyConceptExtractor do
 
   describe AlchemyConceptExtractor::ConceptExtractor do

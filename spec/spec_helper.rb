@@ -2,10 +2,10 @@ require 'rdf'
 require 'rdf/ntriples'
 require 'rdf/rdfxml'
 
-require_relative '../alchemy-concept-extractor.rb'
-require_relative '../lib/extractor.rb'
-require_relative '../lib/reporter.rb'
-require_relative '../lib/refiner.rb'
+require_relative '../lib/alchemy-concept-extractor.rb'
+require_relative '../lib/models/extractor.rb'
+require_relative '../lib/models/reporter.rb'
+require_relative '../lib/models/refiner.rb'
 
 include RDF
 
