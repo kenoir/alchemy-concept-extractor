@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Extracts concepts for a given URI from the Alchemy API (http://www.alchemyapi.com/)" 
   s.authors     = ["Philip Lamond","Robert Kenny"]
   s.email       = 'philip.lamond@bbc.co.uk'      
-  s.files       = ["alchemy-concept-extractor.rb"]     
+  s.files       = ["lib/alchemy-concept-extractor.rb"]     
   s.homepage    = 'https://github.com/BBC-Knowlearn/alchemy-concept-extractor.git'
   s.add_dependency 'rest-client', '>= 1.6.7'
   s.add_dependency 'json', '>= 1.7.5'

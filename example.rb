@@ -1,4 +1,4 @@
-require_relative 'alchemy-concept-extractor.rb'
+require_relative 'lib/alchemy-concept-extractor.rb'
 
 AlchemyConceptExtractor.extract(
   'api_key',

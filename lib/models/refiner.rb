@@ -1,5 +1,5 @@
 module AlchemyConceptExtractor
-  require_relative 'mixin/triples.rb'
+  require_relative '../mixin/triples.rb'
 
   class Refiner 
 
