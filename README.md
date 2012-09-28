@@ -8,6 +8,9 @@ A thin client around the Alchemy REST API.
 
 Requires an AlchemyAPI api key.
 
+Usage
+-----
+
 In your Gemfile:
 
     gem 'alchemy-concept-extractor', :git => 'https://github.com/BBC-Knowlearn/alchemy-concept-extractor.git' 
@@ -31,3 +34,8 @@ To run after cloning this project:
       'location_of_newline_separated_urls_in_file',
       'location_of_output_files'
     )
+    
+Examples
+--------
+
+[https://github.com/BBC-Knowlearn/kl-concept-extractor](https://github.com/BBC-Knowlearn/kl-concept-extractor)
