@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|  
   s.name        = 'alchemy-concept-extractor'
-  s.version     = '0.0.3'      
+  s.version     = '0.1.0'      
   s.date        = '2012-09-25'
   s.summary     = "Alchemy API Concept Extractor"
   s.description = "Extracts concepts for a given URI from the Alchemy API (http://www.alchemyapi.com/)" 
