@@ -18,6 +18,7 @@ module AlchemyConceptExtractor
     attr :datfile_location
     attr :output_format
     attr :rest_client
+    attr :refiner
 
     def initialize(api_key,
                    outfile_location,
@@ -30,6 +31,7 @@ module AlchemyConceptExtractor
       @datfile_location = datfile_location
       @output_format = output_format 
       @rest_client = rest_client
+      @refiner = Refiner.new
     end
 
     def uris
@@ -37,6 +39,15 @@ module AlchemyConceptExtractor
       uris = uris_file.split("\n")
 
       uris
+    end
+
+    def append_graph_to_file(graph)
+      reporter = Reporter.new(graph)
+      serialised_rdf = reporter.report(@output_format)
+
+      File.open outfile_location, 'a' do |file|
+        file.puts serialised_rdf
+      end
     end
 
     def extract
@@ -47,15 +58,8 @@ module AlchemyConceptExtractor
         puts "Disambiguating: #{uri}"
 
         concepts = extractor.get_concepts uri
-
-        refiner = Refiner.new
-        reporter = Reporter.new(concepts,refiner)
-
-        serialised_rdf = reporter.report(@output_format) 
-
-        File.open outfile_location, 'a' do |file|
-          file.puts serialised_rdf
-        end
+        graph = @refiner.refine(concepts)
+        append_graph_to_file(graph)
       end
     end
   end

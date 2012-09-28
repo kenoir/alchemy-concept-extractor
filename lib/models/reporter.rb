@@ -5,16 +5,17 @@ module AlchemyConceptExtractor
 
   class Reporter
 
-    attr :concepts
-    attr :refiner
+    attr :graph
 
-    def initialize(concepts,refiner)
-      @refiner = refiner
-      @concepts = concepts
+    def initialize(graph)
+      @graph = graph
     end
 
     def report(format) 
-      graph = refiner.refine(concepts) 
+      Reporter.serialize(@graph,format)
+    end
+
+    def self.serialize(graph,format)
       graph.dump(format)
     end
 
