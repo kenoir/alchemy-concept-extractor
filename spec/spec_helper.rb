@@ -77,23 +77,11 @@ def stub_concepts
   JSON.parse(dummy_json)
 end
 
-def people_query
-  event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
+def about_query
   query = RDF::Query.new({
-    :person => {
-    event.agent => :uri
-  }
-  })
-
-  query
-end
-
-def places_query
-  event = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
-  query = RDF::Query.new({
-    :place => {
-    event.place  => :uri 
-  }
+    :about=> {
+      RDF.about => :uri
+    }
   })
 
   query
@@ -104,5 +92,3 @@ def should_not_raise_bad_format_exception(format,file_location)
   file_contents = IO.read(file_location)
   RDF::Reader.for(format).new(file_contents,options)
 end
-
-

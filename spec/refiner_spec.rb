@@ -14,21 +14,10 @@ describe AlchemyConceptExtractor do
         refined_graph.should be_an_instance_of(RDF::Graph)
       end
 
-      it 'should return a list of people in the graph' do
+      it 'should return a list of uris about a concept in the graph' do
         refined_graph = subject.refine(stub_concepts)
 
-        solutions = people_query.execute(refined_graph)
-        solutions.count.should > 0
-
-        solutions.each do |solution|
-          solution.uri.should_not be_nil
-        end
-      end
-
-      it 'should return a list of places in the graph' do
-        refined_graph = subject.refine(stub_concepts)
-
-        solutions = places_query.execute(refined_graph)
+        solutions = about_query.execute(refined_graph)
         solutions.count.should > 0
 
         solutions.each do |solution|

@@ -14,10 +14,8 @@ module AlchemyConceptExtractor
       concepts['entities'].each do | entity |
 
         case entity['type']
-        when "City" || "Country" 
-          all_triples.concat triples(entity) { place_triples(entity) }
-        when "Person" 
-          all_triples.concat triples(entity) { person_triples(entity) }
+        when "City" || "Country" || "Person" 
+          all_triples.concat triples(entity) { about_triples(entity) }
         end
       end
 
