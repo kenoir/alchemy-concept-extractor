@@ -12,11 +12,7 @@ module AlchemyConceptExtractor
       @object = concepts['url']
 
       concepts['entities'].each do | entity |
-
-        case entity['type']
-        when "City" || "Country" || "Person" 
-          all_triples.concat triples(entity) { about_triples(entity) }
-        end
+        all_triples.concat triples(entity) { about_triples(entity) }
       end
 
       statements(all_triples).each do | statement |
